@@ -180,5 +180,3 @@ text
 - Add your personal contact information
 - Include a link to your live portfolio when deployed
 - Add any additional technologies you're using
-
-This README provides a professional overview of your portfolio project and will look great on GitHub!
