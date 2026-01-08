@@ -96,9 +96,10 @@ const Navigation = () => {
     <>
       <nav
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
           isScrolled ? 'glass py-3' : 'py-4 sm:py-6'
         }`}
+        style={{ zIndex: 40 }}
       >
         <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between">
           {/* Logo */}
@@ -170,7 +171,7 @@ const Navigation = () => {
       <div
         ref={mobileMenuRef}
         className="fixed inset-y-0 right-0 w-[85%] max-w-[320px] z-[55] hidden"
-        style={{ transform: 'translateX(100%)' }}
+        style={{ transform: 'translateX(100%)', zIndex: 55 }}
       >
         <div className="h-full bg-card/95 backdrop-blur-xl border-l border-border/50 flex flex-col">
           {/* Menu Header */}
@@ -214,6 +215,7 @@ const Navigation = () => {
       {isMobileMenuOpen && (
         <div
           className="fixed inset-0 bg-background/60 backdrop-blur-sm z-[54] lg:hidden"
+          style={{ zIndex: 54 }}
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}

@@ -204,16 +204,19 @@ const HeroSection = () => {
     <section
       ref={heroRef}
       data-page-transition-skip
-      className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden z-10"
+      style={{ zIndex: 10 }}
     >
-      {/* 3D Background */}
-      <Scene3D />
+      {/* 3D Background - Behind everything */}
+      <div className="absolute inset-0 z-0">
+        <Scene3D />
+      </div>
 
       {/* Animated gradient background */}
-      <div className="absolute inset-0 animated-gradient opacity-50" />
+      <div className="absolute inset-0 animated-gradient opacity-50 z-1" />
 
       {/* Floating glassmorphism shapes */}
-      <div ref={shapesRef} className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div ref={shapesRef} className="absolute inset-0 pointer-events-none overflow-hidden z-2">
         {/* Large frosted circle */}
         <div className="hero-shape absolute top-[15%] left-[10%] w-24 h-24 sm:w-36 sm:h-36 rounded-full bg-primary/5 backdrop-blur-md border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)]" />
         
@@ -234,13 +237,14 @@ const HeroSection = () => {
       </div>
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background pointer-events-none" />
-      <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background pointer-events-none z-3" />
+      <div className="absolute inset-0 bg-hero-gradient pointer-events-none z-3" />
 
       {/* Social Links - Left Side with Glassmorphism */}
       <div
         ref={socialRef}
-        className="hidden md:flex fixed left-4 lg:left-8 top-1/2 -translate-y-1/2 flex-col gap-4 z-20"
+        className="hidden md:flex fixed left-4 lg:left-8 top-1/2 -translate-y-1/2 flex-col gap-4 z-30"
+        style={{ zIndex: 30 }}
       >
         {socialLinks.map(({ icon: Icon, href, label }) => (
           <a
@@ -264,7 +268,8 @@ const HeroSection = () => {
       {/* Stats - Right Side with Enhanced Glassmorphism */}
       <div
         ref={statsRef}
-        className="hidden md:flex fixed right-4 lg:right-8 top-1/2 -translate-y-1/2 flex-col gap-4 lg:gap-5 z-20"
+        className="hidden md:flex fixed right-4 lg:right-8 top-1/2 -translate-y-1/2 flex-col gap-4 lg:gap-5 z-30"
+        style={{ zIndex: 30 }}
       >
         {stats.map((stat, index) => (
           <div
@@ -296,10 +301,11 @@ const HeroSection = () => {
 
       {/* Main Content */}
       <div
-        className="container mx-auto px-4 sm:px-6 text-center relative z-10"
+        className="container mx-auto px-4 sm:px-6 text-center relative z-20"
         style={{
           transform: `translate(${normalizedX * 15}px, ${normalizedY * 15}px)`,
           transition: 'transform 0.4s ease-out',
+          zIndex: 20,
         }}
       >
         
@@ -307,7 +313,7 @@ const HeroSection = () => {
         {/* Title */}
         <h1
           ref={titleRef}
-          className="font-display text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-[0.9] mb-6 sm:mb-8 perspective-2000"
+          className="font-display mt-16 text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-[0.9] mb-6 sm:mb-8 perspective-2000"
         >
           <span className="split-parent block overflow-hidden">
             <span className="word inline-block transform-gpu">Building</span>
@@ -374,20 +380,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div
-        ref={scrollIndicatorRef}
-        onClick={handleScrollClick}
-        className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group"
-        data-cursor-hover
-      >
-        <span className="text-xs sm:text-sm text-muted-foreground group-hover:text-primary transition-colors font-medium">
-          Scroll to explore
-        </span>
-        <div className="w-6 h-10 sm:w-7 sm:h-12 rounded-full border-2 border-muted-foreground/50 group-hover:border-primary transition-all duration-300 flex items-start justify-center p-1.5 sm:p-2 group-hover:glow">
-          <div className="w-1.5 h-3 bg-muted-foreground group-hover:bg-primary rounded-full animate-bounce transition-colors" />
-        </div>
-      </div>
+    
     </section>
   );
 };

@@ -256,9 +256,6 @@ const SkillsSection = () => {
 
           <h2 className="skills-title font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold perspective-1000">
             <span className="word inline-block">Skills</span>
-            <span className="word inline-block ml-4 text-gradient">&</span>
-            <br className="hidden sm:block" />
-            <span className="word inline-block sm:mt-2">Technologies</span>
           </h2>
         </div>
       </div>

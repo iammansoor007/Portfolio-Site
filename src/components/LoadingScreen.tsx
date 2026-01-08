@@ -96,8 +96,8 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
       {/* Logo */}
       <div ref={logoRef} className="relative mb-8">
         <div className="flex items-center gap-1 text-6xl md:text-8xl font-display font-bold">
-          <span className="logo-letter text-gradient">Mansoor</span>
-          <span className="logo-letter text-gradient">Shah</span>
+          <span className="logo-letter text-gradient">M</span>
+          <span className="logo-letter text-gradient">S</span>
           <span className="logo-letter text-primary text-7xl md:text-9xl">.</span>
         </div>
         {/* Glow effect */}
